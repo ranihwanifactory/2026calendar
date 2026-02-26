@@ -222,6 +222,17 @@ const EventModal: React.FC<EventModalProps> = ({
             {existingEvent && (
               <button type="button" onClick={() => { onDelete(existingEvent.id); onClose(); }} className="flex-1 px-4 py-3 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 font-bold rounded-xl hover:bg-red-100 dark:hover:bg-red-900/40 transition-colors">삭제</button>
             )}
+            {existingEvent && eventType === 'contact' && phoneNumber && (
+              <a 
+                href={`tel:${phoneNumber}`}
+                className="flex-1 px-4 py-3 bg-emerald-500 text-white font-bold rounded-xl hover:bg-emerald-600 transition-all shadow-lg flex items-center justify-center gap-2"
+              >
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                전화걸기
+              </a>
+            )}
             <button type="submit" className={`flex-1 px-4 py-3 bg-slate-900 dark:bg-indigo-600 text-white font-bold rounded-xl hover:bg-slate-800 dark:hover:bg-indigo-700 transition-all shadow-lg shadow-slate-200 dark:shadow-none ${!existingEvent ? 'w-full' : ''}`}>저장</button>
           </div>
         </form>
